@@ -12,7 +12,7 @@
 </head>
 <body>
   <div class="container" ng-controller="StudentsCtrl">
-    <div class="row">
+    <div class="row" ng-show="students.length">
       <div class="col-md-12">
         <h4>Search Students</h4>
         <form class="form-inline" role="form">
@@ -20,9 +20,14 @@
             <input ng-model="query" type="text" class="form-control" id="student-name" placeholder="Search">
           </div>
         </form>
-        <h2>Student List</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <h2 ng-show="students.length && filtered.length">Student List</h2>
+        <h2 ng-show="students.length && !filtered.length">No Matches</h2>
           <ul>
-            <li ng-repeat="item in students | filter:query">
+            <li ng-repeat="item in filtered = (students | filter:query)">
               <span ng-hide="editing" ng-click="editing = true">
                 {{item.name}} <a ng-click="deleteStudent(item)">Delete</a>
               </span>
@@ -48,7 +53,7 @@
   </div>
 
   <div class="container" ng-controller="TeachersCtrl">
-    <div class="row">
+    <div class="row" ng-show="teachers.length">
       <div class="col-md-12">
         <h4>Teacher Search</h4>
         <form class="form-inline" role="form">
@@ -56,9 +61,14 @@
             <input ng-model="find" type="text" class="form-control" id="student-name" placeholder="Search">
           </div>
         </form>
-        <h2>Teacher List</h2>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <h2 ng-show="teachers.length && filtered.length">Teacher List</h2>
+        <h2 ng-show="teachers.length && !filtered.length">No Matches</h2>
         <ul>
-          <li ng-repeat="item in teachers | filter:find">
+          <li ng-repeat="item in filtered = (teachers | filter:find)">
             <span ng-hide="editing" ng-click="editing = true">
               {{item.name}} <a ng-click="deleteTeacher(item)">Delete</a>
             </span>
