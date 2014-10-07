@@ -1,14 +1,59 @@
 <!doctype html>
 
-<html lang="eng">
+<html lang="eng" ng-app="studentRoster">
 <head>
   <meta charset="UTF-8">
   <title>Student App</title>
   <script src="lib/angular.js"></script>
   <script src="app.js"></script>
+  <script src="js/StudentController.js"></script>
+  <script src="js/TeacherController.js"></script>
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 </head>
 <body>
+  <div class="container" ng-controller="StudentsCtrl">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Student List</h2>
+          <ul>
+            <li ng-repeat="item in students">
+              {{item.name}}
+            </li>
+          </ul>
+      </div>
+      <div class="col-md-4">
+        <h2>New Student</h2>
+        <form ng-submit="addStudent()" class="form-inline" role="form">
+          <div class="form-group">
+            <input type="text" ng-model="studentName" class="form-control" id="student-name" placeholder="Enter name">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
 
+
+  <div class="container" ng-controller="TeachersCtrl">
+    <div class="row">
+      <div class="col-md-12">
+        <h2>Teacher List</h2>
+        <ul>
+          <li ng-repeat="item in teachers">
+            {{item.name}}
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h2>New Teachers</h2>
+        <form ng-submit="addTeacher()" class="form-inline" role="form">
+          <div class="form-group">
+            <input type="text" ng-model="teacherName" class="form-control" id="teacher-name" placeholder="Enter name">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
