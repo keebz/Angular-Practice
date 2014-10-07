@@ -4,11 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <title>Student App</title>
-  <script src="lib/angular.js"></script>
+
+  <script src="http://code.angularjs.org/1.1.5/angular.js"></script>
   <script src="app.js"></script>
   <script src="js/StudentController.js"></script>
   <script src="js/TeacherController.js"></script>
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <div class="container" ng-controller="StudentsCtrl">
@@ -27,9 +29,9 @@
         <h2 ng-show="students.length && filtered.length">Student List</h2>
         <h2 ng-show="students.length && !filtered.length">No Matches</h2>
           <ul>
-            <li ng-repeat="item in filtered = (students | filter:query)">
+            <li ng-animate="'animate'" ng-repeat="item in filtered = (students | filter:query)">
               <span ng-hide="editing" ng-click="editing = true">
-                {{item.name}} <a ng-click="deleteStudent(item)">Delete</a>
+                {{item.name}}<a ng-click="deleteStudent(item)"> Delete</a>
               </span>
               <span class="form-group" ng-show='editing' ng-submit="editing = false">
                 <form class="form-inline" role="form">
@@ -66,9 +68,9 @@
     <div class="row">
       <div class="col-md-12">
         <h2 ng-show="teachers.length && filtered.length">Teacher List</h2>
-        <h2 ng-show="teachers.length && !filtered.length">No Matches</h2>
+        <h2 ng-animate="'animate'" ng-show="teachers.length && !filtered.length">No Matches</h2>
         <ul>
-          <li ng-repeat="item in filtered = (teachers | filter:find)">
+          <li ng-animate="'animate'" ng-repeat="item in filtered = (teachers | filter:find)">
             <span ng-hide="editing" ng-click="editing = true">
               {{item.name}} <a ng-click="deleteTeacher(item)">Delete</a>
             </span>
